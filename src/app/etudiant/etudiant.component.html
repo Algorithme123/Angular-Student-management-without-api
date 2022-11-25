@@ -1,0 +1,130 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <div class="container">Gestion des etudiants</div>
+
+    </a>
+  </div>
+</nav>
+<p></p>
+<div class="container px-4 px-lg-5 mt-5">
+
+  <div *ngIf="!afficherFormulaire">
+
+    <button type="button" (click)="fonctionModifierVariable()" class="btn btn-warning"
+      (blur)="formulaireAjoutEtudiant; ">
+      <!-- <button type="button" (click)="fonctionModifierVariable()" class="btn btn-warning"  (blur)="formulaireAjoutEtudiant; "> -->
+      Ajouter Un Etudiant
+    </button>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Filiere</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let etudiant of newEtudiantListe; let i= index">
+          <th scope="row">{{ i +1}}</th>
+          <td>{{ etudiant.nom}}</td>
+          <td>{{ etudiant.prenom}}</td>
+          <td>{{etudiant.filiere.libelle }}</td>
+
+          <td *ngIf="etudiant.status">
+
+            <span class="badge bg-success">Activé</span>
+
+          </td>
+          <td *ngIf="!etudiant.status">
+            <span class="badge bg-danger">Désactivé</span>
+          </td>
+
+          <td>
+            <!-- <button type="button" class="btn btn-warning">
+            Modifier
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-danger" *ngIf="etudiant.status == true" >
+            Supprimer
+          </button>
+          &nbsp; -->
+            <button type="button" class="btn btn-danger" *ngIf="etudiant.status == true"
+              (click)="desactiverEtudiant(etudiant)">
+              Desactiver
+            </button>
+            <button type="button" class="btn btn-success" *ngIf="etudiant.status == false"
+              (click)="activerEtudiant(etudiant)">
+              Activer
+            </button>
+            <!-- <button type="button" class="btn btn-danger"  (click)="changerStatus(etudiant.id)">
+            desole
+          </button> -->
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="afficherFormulaire">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-8">
+        <button (click)="fonctionModifierVariable()" type="button" id="add" class="btn btn-outline-primary mb-5">
+          + Liste
+        </button>
+      </div>
+    </div>
+
+    <form class="row g-3 needs-validation" [formGroup]="formulaireAjoutEtudiant" (ngSubmit)="sauvegardeEtudiant()">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="validationCustom01" class="form-label">
+            Nom
+          </label>
+          <input type="text" formControlName="nom" [(ngModel)]="etudiant.nom" class="form-control"
+            id="validationCustom01" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label for="validationCustom02" class="form-label">
+            Prenom
+          </label>
+          <input type="text" formControlName="prenom" [(ngModel)]="etudiant.prenom" class="form-control"
+            id="validationCustom02" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <label for="validationCustom02" class="form-label">
+            filiere
+          </label>
+          <input type="text" formControlName="filiere" [(ngModel)]="etudiant.filiere" class="form-control"
+            id="validationCustom02" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">
+          Submit form
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

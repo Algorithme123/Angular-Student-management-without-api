@@ -1,0 +1,82 @@
+
+
+<div *ngIf="!afficherFormulaire">
+
+  <div class="col-lg-12">
+    <div class="white_box mb_30">
+      <div class="box_header ">
+        <div class="main-title">
+          <h3 class="mb-0">Liste des filieres</h3>
+        </div>
+      </div>
+      <button type="button" (click)="fonctionModifierVariable()" class="btn btn-warning">
+        Ajouter Un Etudiant
+      </button>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">N²</th>
+            <th scope="col">Code</th>
+            <th scope="col">Libelle</th>
+            <!--<th scope="col">status</th> -->
+            <th scope="col">status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let filiere of newFiliereListe; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ filiere.code}}</td>
+            <td>{{ filiere.libelle}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="afficherFormulaire">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8">
+      <button (click)="fonctionModifierVariable()" type="button" id="add" class="btn btn-outline-primary mb-5">
+        + Liste
+      </button>
+    </div>
+  </div>
+
+  <form class="row g-3 needs-validation" [formGroup]="formulaireAjoutFiliere" (ngSubmit)="sauvegardeFiliere()">
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">
+          Code
+        </label>
+        <input type="text" formControlName="code" [(ngModel)]="filiere.code" class="form-control"
+          id="validationCustom02" required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">
+          Libelle
+        </label>
+        <input type="text" formControlName="libelle" [(ngModel)]="filiere.libelle" class="form-control"
+          id="validationCustom02" required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+    </div>
+
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">
+        Submit form
+      </button>
+    </div>
+  </form>
+
+</div>
+
