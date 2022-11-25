@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup ,FormControl,Validators } from '@angular/forms';
 import { Etudiant } from '../models/etudiant';
 import { EtudiantService } from '../service/etudiant.service';
+import { Filiere } from '../models/filiere';
+import { FiliereService } from '../service/filiere.service';
 
 @Component({
   selector: 'app-etudiant',
@@ -10,15 +12,17 @@ import { EtudiantService } from '../service/etudiant.service';
 })
 export class EtudiantComponent implements OnInit {
 
-  constructor( private etudiantService : EtudiantService) {
+  constructor( private etudiantService : EtudiantService, private etudiantFiliereService : FiliereService) {
 
     this.etudiantService =etudiantService;
+    this.etudiantFiliereService = etudiantFiliereService;
    }
 
 
 
   ngOnInit(): void {
     this.afficherListeEtudiant();
+    this.afficherFiliere();
   }
 
   afficherFormulaire : boolean = false;
@@ -72,5 +76,15 @@ afficherListeEtudiant (){
 
 
 }
+
+listFiliere : Filiere[] =[]
+
+afficherFiliere(){
+
+  this.listFiliere = this.etudiantFiliereService.afficherFiliere();
+
+}
+
+
 
 }

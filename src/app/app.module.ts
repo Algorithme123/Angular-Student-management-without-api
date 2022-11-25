@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { FiliereComponent } from './filiere/filiere.component';
 import { FiliereService } from './service/filiere.service';
 import { AnneUniversitaireComponent } from './anne-universitaire/anne-universitaire.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AnneUniversitaireComponent } from './anne-universitaire/anne-universita
     FooterComponent,
     TableauDeBordComponent,
     FiliereComponent,
-    AnneUniversitaireComponent
+    AnneUniversitaireComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,

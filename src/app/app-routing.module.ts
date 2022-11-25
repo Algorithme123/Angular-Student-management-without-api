@@ -4,6 +4,7 @@ import { EtudiantComponent } from './etudiant/etudiant.component';
 import { FiliereComponent } from './filiere/filiere.component';
 import { AnneeUniversitaire } from './models/AnneeUniversitaire';
 import { AnneUniversitaireComponent } from './anne-universitaire/anne-universitaire.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
   { path: '**',redirectTo: 'tableau-de-bord', pathMatch: 'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
 
 
   {path: 'filiere',component : FiliereComponent},
-  {path: 'anneeScolaire',component : AnneUniversitaireComponent}
+  {path: 'anneeScolaire',component : AnneUniversitaireComponent},
+  {path: 'inscription',component : InscriptionComponent}
   // {path: 'anneeUniv',component : AnneeUniversitaire}
 
 ];

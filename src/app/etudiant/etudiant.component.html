@@ -112,8 +112,13 @@
           <label for="validationCustom02" class="form-label">
             filiere
           </label>
-          <input type="text" formControlName="filiere" [(ngModel)]="etudiant.filiere" class="form-control"
-            id="validationCustom02" required>
+          <!--<input type="text" formControlName="filiere" [(ngModel)]="etudiant.filiere" class="form-control"
+            id="validationCustom02" required>-->
+            <select class="form-select form-control-lg mb_30" formControlName="filiere" [(ngModel)]="etudiant.filiere.libelle" >
+
+
+              <option *ngFor="let filiere of listFiliere" value="{{filiere.libelle}}"> {{filiere.libelle}} </option>
+             </select>
           <div class="valid-feedback">Looks good!</div>
         </div>
 

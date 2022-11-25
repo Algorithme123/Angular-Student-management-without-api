@@ -11,6 +11,7 @@ export class Etudiant{
     this.id=0;
     this.nom= '';
     this.prenom='';
+    this.filiere= new Filiere();
     this.status = false
 
   }
