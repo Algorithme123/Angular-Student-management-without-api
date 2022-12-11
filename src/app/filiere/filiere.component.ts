@@ -14,6 +14,11 @@ export class FiliereComponent implements OnInit {
 
    }
 
+
+   errorMessage :  any;
+
+   successMessage : any;
+
   ngOnInit(): void {
     this.afficherListeFiliere()
   }
@@ -35,9 +40,19 @@ formulaireAjoutFiliere = new FormGroup ({
 });
 
 sauvegardeFiliere(){
+
+  if(this.formulaireAjoutFiliere.valid){
+
   console.log(this.filiere);
   this.filiereService.ajouterFiliere(this.filiere);
+  this.successMessage = "Filiere Enregister avec Succes";
+
+}else{
+  this.errorMessage = "Erreur d'Enregistrement";
+
 }
+}
+
 
 newFiliereListe : Filiere[] = []
 

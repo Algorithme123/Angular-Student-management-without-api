@@ -10,7 +10,7 @@
         </div>
       </div>
       <button type="button" (click)="fonctionModifierVariable()" class="btn btn-warning">
-        Ajouter Un Etudiant
+        Ajouter Une Filiere
       </button>
       <table class="table table-hover">
         <thead>
@@ -44,6 +44,27 @@
     </div>
   </div>
 
+
+
+
+        <!-- Capturer les message d'erreur -->
+
+
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>{{ errorMessage }}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+         <!-- Capturer les message de success -->
+          <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ successMessage }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+
+
+
+
   <form class="row g-3 needs-validation" [formGroup]="formulaireAjoutFiliere" (ngSubmit)="sauvegardeFiliere()">
 
 
@@ -72,7 +93,7 @@
 
 
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">
+      <button class="btn btn-primary" type="submit" [disabled]="!formulaireAjoutFiliere.valid">
         Submit form
       </button>
     </div>
