@@ -80,6 +80,20 @@
         </button>
       </div>
     </div>
+      <!-- Capturer les message d'erreur -->
+
+
+  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ errorMessage }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  
+   <!-- Capturer les message de success -->
+    <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{ successMessage }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
 
     <form class="row g-3 needs-validation" [formGroup]="formulaireAjoutEtudiant" (ngSubmit)="sauvegardeEtudiant()">
       <div class="row">

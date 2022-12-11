@@ -17,7 +17,9 @@ export class EtudiantComponent implements OnInit {
     this.etudiantService =etudiantService;
     this.etudiantFiliereService = etudiantFiliereService;
    }
+   errorMessage :  any;
 
+   successMessage : any;
 
 
   ngOnInit(): void {
@@ -63,8 +65,19 @@ export class EtudiantComponent implements OnInit {
   })
 
 sauvegardeEtudiant(){
-  this.etudiantService.ajouterEtudiant(this.etudiant);
-  console.log(this.etudiant)
+
+  if(this.formulaireAjoutEtudiant.valid){
+    this.etudiantService.ajouterEtudiant(this.etudiant);
+    console.log(this.etudiant);
+
+
+    this.successMessage = "Etudiant Enregister avec Succes";
+
+  }else{
+    this.errorMessage = "Erreur d'Enregistrement";
+
+  }
+
 }
 
 newEtudiantListe : Etudiant[] =[]
