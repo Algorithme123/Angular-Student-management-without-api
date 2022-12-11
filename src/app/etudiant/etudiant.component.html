@@ -85,18 +85,18 @@
       <div class="row">
         <div class="col-md-6">
           <label for="validationCustom01" class="form-label">
-            Nom
+            Nom <span style="color: red;">*</span>
           </label>
           <input type="text" formControlName="nom" [(ngModel)]="etudiant.nom" class="form-control"
-            id="validationCustom01" required>
-          <div class="valid-feedback">Looks good!</div>
+            id="validationCustom01"  required>
+          <div [hidden]="" class="valid-feedback">Looks good!</div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6">
           <label for="validationCustom02" class="form-label">
-            Prenom
+            Prenom <span style="color: red;">*</span>
           </label>
           <input type="text" formControlName="prenom" [(ngModel)]="etudiant.prenom" class="form-control"
             id="validationCustom02" required>
@@ -110,7 +110,7 @@
       <div class="row">
         <div class="col-md-6">
           <label for="validationCustom02" class="form-label">
-            filiere
+            filiere <span style="color: red;">*</span>
           </label>
           <!--<input type="text" formControlName="filiere" [(ngModel)]="etudiant.filiere" class="form-control"
             id="validationCustom02" required>-->
@@ -125,7 +125,7 @@
       </div>
 
       <div class="col-12">
-        <button class="btn btn-primary" type="submit">
+        <button class="btn btn-primary" type="submit" [disabled]="!formulaireAjoutEtudiant.valid">
           Submit form
         </button>
       </div>
