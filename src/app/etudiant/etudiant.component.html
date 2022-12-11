@@ -45,14 +45,7 @@
           </td>
 
           <td>
-            <!-- <button type="button" class="btn btn-warning">
-            Modifier
-          </button>
-          &nbsp;
-          <button type="button" class="btn btn-danger" *ngIf="etudiant.status == true" >
-            Supprimer
-          </button>
-          &nbsp; -->
+
             <button type="button" class="btn btn-danger" *ngIf="etudiant.status == true"
               (click)="desactiverEtudiant(etudiant)">
               Desactiver
@@ -61,9 +54,7 @@
               (click)="activerEtudiant(etudiant)">
               Activer
             </button>
-            <!-- <button type="button" class="btn btn-danger"  (click)="changerStatus(etudiant.id)">
-            desole
-          </button> -->
+
           </td>
         </tr>
 
@@ -87,7 +78,7 @@
     <strong>{{ errorMessage }}</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
-  
+
    <!-- Capturer les message de success -->
     <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
       <strong>{{ successMessage }}</strong>
@@ -101,9 +92,11 @@
           <label for="validationCustom01" class="form-label">
             Nom <span style="color: red;">*</span>
           </label>
-          <input type="text" formControlName="nom" [(ngModel)]="etudiant.nom" class="form-control"
-            id="validationCustom01"  required>
-          <div [hidden]="" class="valid-feedback">Looks good!</div>
+          <input type="text"  [(ngModel)]="etudiant.nom" class="form-control"
+
+          [ngClass]="{'is-invalid': etudiant.nom || !etudiant.nom,'is-valid': !etudiant.nom }"
+          id="validationCustom01"  required>
+          <div [hidden]="" class="valid-feedback">Le mom est neccesssaire</div>
         </div>
       </div>
 
@@ -112,9 +105,10 @@
           <label for="validationCustom02" class="form-label">
             Prenom <span style="color: red;">*</span>
           </label>
-          <input type="text" formControlName="prenom" [(ngModel)]="etudiant.prenom" class="form-control"
+          <input type="text"  [(ngModel)]="etudiant.prenom" class="form-control"
+          [ngClass]="{'is-invalid': etudiant.prenom || !etudiant.nom,'is-valid': !etudiant.prenom }"
             id="validationCustom02" required>
-          <div class="valid-feedback">Looks good!</div>
+          <div class="valid-feedback">Prenom Obligatoire</div>
         </div>
 
       </div>
@@ -128,12 +122,12 @@
           </label>
           <!--<input type="text" formControlName="filiere" [(ngModel)]="etudiant.filiere" class="form-control"
             id="validationCustom02" required>-->
-            <select class="form-select form-control-lg mb_30" formControlName="filiere" [(ngModel)]="etudiant.filiere.libelle" >
+            <select class="form-select form-control-lg mb_30"  [(ngModel)]="etudiant.filiere.libelle" >
 
 
               <option *ngFor="let filiere of listFiliere" value="{{filiere.libelle}}"> {{filiere.libelle}} </option>
              </select>
-          <div class="valid-feedback">Looks good!</div>
+          <div class="valid-feedback">Filiere Obligatoire</div>
         </div>
 
       </div>

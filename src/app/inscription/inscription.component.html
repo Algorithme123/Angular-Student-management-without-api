@@ -1,1 +1,140 @@
-<p>inscription works!</p>
+<nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <div class="container">Gestion des Inscriptions</div>
+
+          </a>
+        </div>
+      </nav>
+      <p></p>
+      <div class="container px-4 px-lg-5 mt-5">
+
+        <div *ngIf="!afficherFormulaire">
+
+          <button type="button" (click)="fonctionModifierVariable()" class="btn btn-warning"
+            (blur)="formulaireAjoutInscription; ">
+            <!-- <button type="button" (click)="fonctionModifierVariable()" class="btn btn-warning"  (blur)="formulaireAjoutEtudiant; "> -->
+            Ajouter Un Etudiant
+          </button>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Etudiant</th>
+                <th scope="col">Filiere</th>
+                <th scope="col">AnneeUniversitaire</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let inscripton of newInscriptionListe; let i= index">
+                <th scope="row">{{ i +1}}</th>
+                <td>{{inscripton.etudiant.nom}} {{inscripton.etudiant.prenom}}</td>
+                <td>{{ inscripton.filiere.libelle}}</td>
+                <td>{{inscripton.anneeUniversitaire.code }}</td>
+
+
+
+                <td>
+                  <!-- <button type="button" class="btn btn-warning">
+                  Modifier
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-danger" *ngIf="etudiant.status == true" >
+                  Supprimer
+                </button>
+                &nbsp; -->
+
+                  <!-- <button type="button" class="btn btn-danger"  (click)="changerStatus(etudiant.id)">
+                  desole
+                </button> -->
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="afficherFormulaire">
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-8">
+              <button (click)="fonctionModifierVariable()" type="button" id="add" class="btn btn-outline-primary mb-5">
+                + Liste
+              </button>
+            </div>
+          </div>
+            <!-- Capturer les message d'erreur -->
+
+
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>{{ errorMessage }}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+         <!-- Capturer les message de success -->
+          <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ successMessage }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+
+          <form class="row g-3 needs-validation" [formGroup]="formulaireAjoutInscription" (ngSubmit)="sauvegardeInscription()">
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="validationCustom02" class="form-label">
+                  Etudiant <span style="color: red;">*</span>
+                </label>
+                        <select class="form-select form-control-lg mb_30" formControlName="etudiant" [(ngModel)]="inscription.etudiant.nom" >
+
+
+                                <option *ngFor="let etud of listEtudiant" value="{{etud.nom}}"> {{etud.prenom}} </option>
+                        </select>
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                  <label for="validationCustom02" class="form-label">
+                    Filiere <span style="color: red;">*</span>
+                  </label>
+                          <select class="form-select form-control-lg mb_30" formControlName="filiere" [(ngModel)]="inscription.filiere.libelle" >
+
+
+                                  <option *ngFor="let filiere of listFiliere" value="{{filiere.libelle}}"> {{filiere.libelle}} </option>
+                          </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="validationCustom02" class="form-label">
+                    Annee Universitaire <span style="color: red;">*</span>
+                  </label>
+                          <select class="form-select form-control-lg mb_30" formControlName="anneeUniversitaire" [(ngModel)]="inscription.filiere.libelle" >
+
+
+                                  <option *ngFor="let anneeUniversitaire of listAnneeUniversitaire" value="{{anneeUniversitaire.code}}"> {{anneeUniversitaire.code}} </option>
+                          </select>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+              </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit" [disabled]="!formulaireAjoutInscription.valid">
+                Submit form
+              </button>
+            </div>
+
+
+          </form>
+
+        </div>
+      </div>

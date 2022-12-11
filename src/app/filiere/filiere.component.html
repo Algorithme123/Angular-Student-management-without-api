@@ -73,7 +73,9 @@
         <label for="validationCustom02" class="form-label">
           Code
         </label>
-        <input type="text" formControlName="code" [(ngModel)]="filiere.code" class="form-control"
+        <input type="text"  [(ngModel)]="filiere.code" class="form-control"
+        [ngClass]="{'is-invalid': filiere.code || !filiere.code,'is-valid': !filiere.code }"
+
           id="validationCustom02" required>
         <div class="valid-feedback">Looks good!</div>
       </div>
@@ -85,6 +87,8 @@
           Libelle
         </label>
         <input type="text" formControlName="libelle" [(ngModel)]="filiere.libelle" class="form-control"
+        [ngClass]="{'is-invalid': filiere.libelle || !filiere.libelle,'is-valid': !filiere.libelle }"
+
           id="validationCustom02" required>
         <div class="valid-feedback">Looks good!</div>
       </div>

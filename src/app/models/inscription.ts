@@ -8,13 +8,7 @@ export class Inscription
   filiere! : Filiere ;
   anneeUniversitaire! :  AnneeUniversitaire;
 
-  constructor(){
 
-
-
-  }
-
-
-
+ 
 
 }
